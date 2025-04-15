@@ -8,19 +8,42 @@ def get_number(number):
         except ValueError:
             print("Podana wartość nie jest liczbą!")
 
-a = get_number("Podaj składnik 1. ")
-b = get_number("Podaj składnik 2. ")
+def get_numbers():
+    numbers = []
+
+    while True:
+        value = input("Podaj liczbę, aby zakończyć podawanie liczb i wykonać działanie wpisz 'end': ")
+        if value.lower() == 'end':
+            break
+        try:
+            number = float(value)
+            numbers.append(number)
+        except ValueError:
+            print("Podana wartość nie jest liczbą!")
+    return numbers
 
 if operation == 1:
-    c = a + b
-    print(f"Dodaję {a} i {b}")
+    summing = get_numbers()
+    c = sum(summing)
+    print(f"Dodaję liczby {summing}")
+    
 elif operation == 2:
+    a = get_number("Podaj składnik 1. ")
+    b = get_number("Podaj składnik 2. ")
     c = a - b
     print(f"Odejmuję {a} i {b}")
+
 elif operation == 3:
-    c = a * b
-    print(f"Mnożę {a} i {b}")
+    multipling = get_numbers()
+    c = 1
+    for i in multipling:
+        c*= i
+    print(f"Mnożę liczby {multipling}")
+
 elif operation == 4:
+    a = get_number("Podaj składnik 1. ")
+    b = get_number("Podaj składnik 2. ")
     c = a / b
     print(f"Dzielę {a} i {b}")
+
 print(f"Wynik to: {c}")
